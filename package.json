@@ -1,16 +1,16 @@
 {
-  "name": "temporal-hello-world",
+  "name": "test-project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "tsc --build",
     "build.watch": "tsc --build --watch",
+    "endpoint": "ts-node src/endpoint.ts",
     "lint": "eslint .",
     "start": "ts-node src/worker.ts",
     "start.watch": "nodemon src/worker.ts",
     "workflow": "ts-node src/client.ts",
-    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "test": "mocha --exit --require ts-node/register --require source-map-support/register src/mocha/*.test.ts"
+    "test": "mocha src/endpoints.test.ts"
   },
   "nodemonConfig": {
     "execMap": {
@@ -22,26 +22,46 @@
     ]
   },
   "dependencies": {
+    "@ronomon/crypto-async": "^5.0.1",
     "@temporalio/activity": "^1.8.4",
     "@temporalio/client": "^1.8.4",
+    "@temporalio/common": "^1.8.4",
     "@temporalio/worker": "^1.8.4",
     "@temporalio/workflow": "^1.8.4",
-    "nanoid": "3.x"
+    "axios": "^1.6.2",
+    "chai": "^4.3.10",
+    "cors": "^2.8.5",
+    "ejson": "^2.2.2",
+    "express": "^4.18.0",
+    "supertest": "^6.3.3",
+    "uuid": "^8.3.2",
+    "validator": "^13.11.0",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "@temporalio/testing": "^1.8.4",
+    "@temporalio/nyc-test-coverage": "^1.8.6",
+    "@temporalio/testing": "^1.8.6",
     "@tsconfig/node16": "^1.0.0",
-    "@types/mocha": "8.x",
+    "@types/cors": "^2.8.12",
+    "@types/ejson": "^2.1.3",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^29.5.8",
     "@types/node": "^16.11.43",
+    "@types/ronomon__crypto-async": "^2.0.0",
+    "@types/uuid": "^8.3.4",
+    "@types/validator": "^13.11.6",
+    "@types/yargs": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-deprecation": "^1.2.1",
-    "mocha": "8.x",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.12",
     "prettier": "^2.8.8",
-    "ts-node": "^10.8.1",
+    "proxyquire": "^2.1.3",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
   }
 }
